@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+:root {
+  --brand-canopy: #173f35;
+  --brand-canopy-mid: #2a5c4a;
+  --brand-canopy-deep: #0f2820;
+  --brand-harvest: #c47b2d;
+  --brand-harvest-hover: #a86624;
+  --brand-frost: #7e959e;
+  --brand-slate: #3d4a52;
+  --brand-mist: #e4ebe7;
+  --brand-snow: #f4f7f5;
+  --brand-ink: #14201c;
+  --brand-muted: #5a6b64;
+  --brand-line: #c5d0ca;
+}
+
+@theme inline {
+  --color-canopy: var(--brand-canopy);
+  --color-canopy-mid: var(--brand-canopy-mid);
+  --color-canopy-deep: var(--brand-canopy-deep);
+  --color-harvest: var(--brand-harvest);
+  --color-harvest-hover: var(--brand-harvest-hover);
+  --color-frost: var(--brand-frost);
+  --color-slate: var(--brand-slate);
+  --color-mist: var(--brand-mist);
+  --color-snow: var(--brand-snow);
+  --color-ink: var(--brand-ink);
+  --color-muted: var(--brand-muted);
+  --color-line: var(--brand-line);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-body);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--brand-mist);
+  color: var(--brand-ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), system-ui, sans-serif;
+}
+
+@keyframes hero-drift {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
+.hero-drift {
+  animation: hero-drift 22s ease-out forwards;
+  will-change: transform;
+}
+
+@keyframes rail-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.season-rail {
+  transform-origin: left center;
+  animation: rail-draw 0.45s ease-out both;
+}
+
+.cta-primary {
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.cta-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(15, 40, 32, 0.18);
+}
+
+.cta-secondary {
+  position: relative;
+}
+
+.cta-secondary::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms ease;
+}
+
+.cta-secondary:hover::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-drift,
+  .season-rail {
+    animation: none !important;
+  }
+
+  .cta-primary:hover {
+    transform: none;
+  }
+}
