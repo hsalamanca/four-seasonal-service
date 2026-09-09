@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Public_Sans } from "next/font/google";
+import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
@@ -31,6 +32,7 @@ export default function RootLayout({
     <html lang="en" className={`${display.variable} ${body.variable} h-full`}>
       <body className="flex min-h-full flex-col antialiased">
         <JsonLd data={localBusinessSchema()} />
+        <AnnouncementBar />
         <Header />
         <main className="flex-1 pb-20 md:pb-0">{children}</main>
         <Footer />

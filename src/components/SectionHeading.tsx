@@ -17,10 +17,11 @@ export function SectionHeading({
     <div className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
       {eyebrow ? (
         <p
-          className={`text-xs font-semibold uppercase tracking-[0.16em] ${
-            tone === "light" ? "text-frost" : "text-canopy-mid"
-          }`}
+          className={`flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] ${
+            align === "center" ? "justify-center" : ""
+          } ${tone === "light" ? "text-harvest" : "text-canopy-mid"}`}
         >
+          {align === "center" ? null : <span className="h-px w-8 bg-harvest" />}
           {eyebrow}
         </p>
       ) : null}

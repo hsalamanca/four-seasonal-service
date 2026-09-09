@@ -42,6 +42,7 @@ async function deliverLead(data: {
   email: string;
   city: string;
   service: string;
+  timing: string;
   message: string;
 }) {
   const notify = process.env.LEAD_NOTIFY_EMAIL || BUSINESS.email;
@@ -55,6 +56,7 @@ async function deliverLead(data: {
     email: data.email || "(none)",
     city: data.city,
     service: data.service,
+    timing: data.timing,
     message: data.message || "(none)",
     source: BUSINESS.domain,
   };

@@ -26,7 +26,7 @@ export default function AreasHubPage() {
         <SectionHeading
           eyebrow="Service areas"
           title="Local routes across Prince William County"
-          description="Choose your city for local details, then call or text for a quote."
+          description="Choose your city for local details, then call or request a quote."
         />
         <div className="mt-12 grid gap-6 sm:grid-cols-2">
           {AREAS.map((area) => (
@@ -35,10 +35,8 @@ export default function AreasHubPage() {
               href={area.href}
               className="rounded-md border border-line bg-snow p-6 transition hover:border-canopy"
             >
-              <h2 className="font-display text-2xl font-bold text-ink">
-                {area.name}
-              </h2>
-              <p className="mt-3 text-muted leading-relaxed">{area.summary}</p>
+              <h2 className="font-display text-2xl font-semibold text-ink">{area.name}</h2>
+              <p className="mt-3 leading-relaxed text-muted">{area.summary}</p>
             </Link>
           ))}
         </div>

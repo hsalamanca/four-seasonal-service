@@ -51,6 +51,14 @@ export default function ServicesHubPage() {
                   {service.name}
                 </h2>
                 <p className="mt-3 leading-relaxed text-muted">{service.summary}</p>
+                <ul className="mt-5 space-y-2 text-sm text-ink">
+                  {service.bullets.map((bullet) => (
+                    <li key={bullet} className="flex gap-2">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-harvest" />
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
                 <span className="mt-5 text-sm font-semibold text-canopy">
                   View {service.shortName.toLowerCase()} details
                 </span>

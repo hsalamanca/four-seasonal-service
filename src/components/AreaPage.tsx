@@ -112,7 +112,7 @@ export function AreaPage({ slug }: { slug: AreaSlug }) {
               href={service.href}
               className="border-b border-line pb-5 transition hover:border-canopy"
             >
-              <h2 className="font-display text-xl font-bold text-ink">
+              <h2 className="font-display text-xl font-semibold text-ink">
                 {service.shortName}
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-muted">
@@ -126,7 +126,7 @@ export function AreaPage({ slug }: { slug: AreaSlug }) {
         </div>
 
         <div className="mt-14 border border-line bg-snow p-6 md:p-8">
-          <h2 className="font-display text-2xl font-bold text-ink">
+          <h2 className="font-display text-2xl font-semibold text-ink">
             Get a free quote for {copy.title}
           </h2>
           <p className="mt-2 max-w-2xl text-muted">

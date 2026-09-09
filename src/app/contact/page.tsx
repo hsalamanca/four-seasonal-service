@@ -35,7 +35,11 @@ export default function ContactPage() {
       <section className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
         <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
-            <h2 className="font-display text-3xl font-semibold text-ink">
+            <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-canopy-mid">
+              <span className="h-px w-8 bg-harvest" />
+              Talk to the crew
+            </p>
+            <h2 className="mt-3 font-display text-3xl font-semibold text-ink">
               Call {BUSINESS.phoneDisplay}
             </h2>
             <p className="mt-4 leading-relaxed text-muted">

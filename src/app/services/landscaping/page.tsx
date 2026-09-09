@@ -1,4 +1,5 @@
 import { CallTextCtas } from "@/components/CallTextCtas";
+import { FaqList } from "@/components/FaqList";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -70,7 +71,7 @@ export default function LandscapingPage() {
             <p className="mt-8 leading-relaxed text-muted">
               Keep the grass matching the beds with{" "}
               <Link href="/services/lawn-care" className="font-semibold text-canopy underline-offset-2 hover:underline">
-                lawn care &amp; mowing
+                lawn care & mowing
               </Link>
               . When winter arrives, stay covered with{" "}
               <Link href="/services/snow-removal" className="font-semibold text-canopy underline-offset-2 hover:underline">
@@ -79,8 +80,8 @@ export default function LandscapingPage() {
               .
             </p>
           </div>
-          <aside className="border border-line bg-snow p-6 md:p-8">
-            <h2 className="font-display text-xl font-bold text-ink">
+          <aside className="rounded-md border border-line bg-snow p-6 md:p-8">
+            <h2 className="font-display text-xl font-semibold text-ink">
               Free landscaping quote
             </h2>
             <p className="mt-2 text-sm text-muted">
@@ -91,15 +92,10 @@ export default function LandscapingPage() {
         </div>
 
         <div className="mt-16">
-          <h2 className="font-display text-2xl font-bold text-ink">Landscaping FAQ</h2>
-          <dl className="mt-6 divide-y divide-line border-y border-line">
-            {faqs.map((faq) => (
-              <div key={faq.q} className="py-5">
-                <dt className="font-semibold text-ink">{faq.q}</dt>
-                <dd className="mt-2 text-muted leading-relaxed">{faq.a}</dd>
-              </div>
-            ))}
-          </dl>
+          <h2 className="font-display text-2xl font-semibold text-ink">Landscaping FAQ</h2>
+          <div className="mt-6">
+            <FaqList items={faqs} />
+          </div>
         </div>
       </section>
     </>

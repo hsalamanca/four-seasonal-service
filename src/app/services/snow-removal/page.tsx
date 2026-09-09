@@ -1,4 +1,5 @@
 import { CallTextCtas } from "@/components/CallTextCtas";
+import { FaqList } from "@/components/FaqList";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -79,27 +80,22 @@ export default function SnowRemovalPage() {
               , Woodbridge, and Manassas.
             </p>
           </div>
-          <aside className="border border-line bg-snow p-6 md:p-8">
-            <h2 className="font-display text-xl font-bold text-ink">
+          <aside className="rounded-md border border-line bg-snow p-6 md:p-8">
+            <h2 className="font-display text-xl font-semibold text-ink">
               Storm or standby quote
             </h2>
             <p className="mt-2 text-sm text-muted">
-              Text your address when snow is coming—or reserve standby before the season.
+              Use the form above when snow is coming—or reserve standby before the season.
             </p>
             <CallTextCtas className="mt-6 text-ink" />
           </aside>
         </div>
 
         <div className="mt-16">
-          <h2 className="font-display text-2xl font-bold text-ink">Snow removal FAQ</h2>
-          <dl className="mt-6 divide-y divide-line border-y border-line">
-            {faqs.map((faq) => (
-              <div key={faq.q} className="py-5">
-                <dt className="font-semibold text-ink">{faq.q}</dt>
-                <dd className="mt-2 text-muted leading-relaxed">{faq.a}</dd>
-              </div>
-            ))}
-          </dl>
+          <h2 className="font-display text-2xl font-semibold text-ink">Snow removal FAQ</h2>
+          <div className="mt-6">
+            <FaqList items={faqs} />
+          </div>
         </div>
       </section>
     </>

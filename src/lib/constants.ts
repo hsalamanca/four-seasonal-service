@@ -96,6 +96,14 @@ export const SERVICE_OPTIONS = [
   "Not sure / multiple",
 ] as const;
 
+export const TIMING_OPTIONS = [
+  "This week",
+  "This month",
+  "Fall cleanup",
+  "Before first snow",
+  "Just getting a price",
+] as const;
+
 export const AREAS = [
   {
     slug: "dale-city",
@@ -135,10 +143,10 @@ export const NAV = [
 ] as const;
 
 export const TRUST = [
-  "Dale City local crew",
-  "Same-day quote replies",
-  "Year-round on one roster",
-  "HOA-ready finish",
+  { label: "Dale City local crew", icon: "pin" },
+  { label: "Same-day quote replies", icon: "clock" },
+  { label: "Year-round on one roster", icon: "leaf" },
+  { label: "If edges aren’t sharp, we come back", icon: "shield" },
 ] as const;
 
 export const SEASONS = [
@@ -165,10 +173,55 @@ export const SEASONS = [
 ] as const;
 
 export const OFFER = {
+  bar: "Now booking · Fall cleanup & snow standby — Dale City routes filling",
   eyebrow: "Now booking · Fall & winter",
-  title: "Fall cleanup and snow standby are open for Dale City.",
+  title: "Fall cleanup and snow standby are open.",
   copy: "Leaf season is short. Storm contracts go first. Get a free quote today—we reply the same day whenever we can.",
 } as const;
+
+export const REVIEWS = [
+  {
+    quote:
+      "They keep our lawn looking sharp every week. Easy to text and always on schedule.",
+    name: "Homeowner",
+    place: "Dale City",
+  },
+  {
+    quote:
+      "Booked spring cleanup and later snow removal with the same crew. That alone is worth it.",
+    name: "Homeowner",
+    place: "Woodbridge",
+  },
+  {
+    quote:
+      "Driveway was clear after the storm. Clear communication, fair quote, solid work.",
+    name: "Homeowner",
+    place: "Prince William County",
+  },
+] as const;
+
+export const HOME_FAQS = [
+  {
+    q: "What areas do you serve?",
+    a: "Dale City is home base. We also serve Woodbridge, Manassas, and homes across Prince William County.",
+  },
+  {
+    q: "Do you offer year-round service?",
+    a: "Yes. Lawn care and landscaping in the growing season, snow removal when winter hits—one local team for every season.",
+  },
+  {
+    q: "How fast can I get a quote?",
+    a: `Use the form or call ${BUSINESS.phoneDisplay}. Same-day replies are the goal during ${BUSINESS.hours.label}.`,
+  },
+  {
+    q: "Can I book lawn care and snow removal together?",
+    a: "Yes. Many neighbors lock in summer mowing and fall snow standby so they don’t scramble when the first storm lands.",
+  },
+  {
+    q: "Do I need to be home?",
+    a: "Usually no. Send the address and any gate notes. We’ll confirm a window and leave the yard finished.",
+  },
+] as const;
 
 export function smsHref(body?: string) {
   const base = `sms:${BUSINESS.phoneSms}`;

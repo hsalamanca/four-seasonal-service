@@ -14,6 +14,12 @@ export function Footer() {
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-snow/75">
             {BUSINESS.tagline} Serving {BUSINESS.city} and {BUSINESS.county}, VA.
           </p>
+          <a
+            href={telHref()}
+            className="mt-5 inline-flex text-sm font-semibold text-harvest hover:underline"
+          >
+            {BUSINESS.phoneDisplay}
+          </a>
         </div>
 
         <div>

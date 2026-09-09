@@ -1,4 +1,4 @@
-import { SERVICE_OPTIONS } from "./constants";
+import { SERVICE_OPTIONS, TIMING_OPTIONS } from "./constants";
 
 export type QuotePayload = {
   name: string;
@@ -6,6 +6,7 @@ export type QuotePayload = {
   email: string;
   city: string;
   service: string;
+  timing: string;
   message: string;
   companyWebsite?: string;
 };
@@ -33,6 +34,11 @@ export function validateQuote(input: QuotePayload) {
   )
     ? input.service
     : "Not sure / multiple";
+  const timing = TIMING_OPTIONS.includes(
+    input.timing as (typeof TIMING_OPTIONS)[number],
+  )
+    ? input.timing
+    : "Just getting a price";
 
   if (name.length < 2 || phone.replace(/\D/g, "").length < 7 || city.length < 2) {
     return {
@@ -48,6 +54,6 @@ export function validateQuote(input: QuotePayload) {
   return {
     ok: true as const,
     honeypot: false,
-    data: { name, phone, email, city, service, message },
+    data: { name, phone, email, city, service, timing, message },
   };
 }

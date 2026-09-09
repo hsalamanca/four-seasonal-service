@@ -16,23 +16,25 @@ export function MobileNav() {
   }, [open]);
 
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <button
         type="button"
         aria-expanded={open}
         aria-controls="mobile-menu"
         aria-label={open ? "Close menu" : "Open menu"}
         onClick={() => setOpen((v) => !v)}
-        className="min-h-11 rounded-sm border border-snow/30 px-3 py-2 text-sm font-semibold text-snow"
+        className="grid min-h-11 min-w-11 place-items-center rounded-sm border border-snow/30 text-snow"
       >
-        Menu
+        <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
+        <span aria-hidden className="flex flex-col gap-1.5">
+          <span className="block h-px w-4 bg-current" />
+          <span className="block h-px w-4 bg-current" />
+          <span className="block h-px w-4 bg-current" />
+        </span>
       </button>
 
       {open ? (
-        <div
-          id="mobile-menu"
-          className="fixed inset-0 z-50 bg-canopy-deep px-5 py-6"
-        >
+        <div id="mobile-menu" className="fixed inset-0 z-50 bg-canopy-deep px-5 py-6">
           <div className="mb-10 flex items-center justify-between">
             <span className="flex items-center gap-3">
               <BrandMark />

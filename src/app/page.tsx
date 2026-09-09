@@ -1,7 +1,21 @@
 import { CallTextCtas } from "@/components/CallTextCtas";
+import { FaqList } from "@/components/FaqList";
+import { IconClock, IconLeaf, IconPin, IconShield, Stars } from "@/components/Icons";
+import { JsonLd } from "@/components/JsonLd";
 import { PageHero } from "@/components/PageHero";
+import { QuoteForm } from "@/components/QuoteForm";
 import { SectionHeading } from "@/components/SectionHeading";
-import { AREAS, BUSINESS, IMAGES, OFFER, SEASONS, SERVICES, TRUST } from "@/lib/constants";
+import {
+  AREAS,
+  BUSINESS,
+  HOME_FAQS,
+  IMAGES,
+  OFFER,
+  REVIEWS,
+  SEASONS,
+  SERVICES,
+  TRUST,
+} from "@/lib/constants";
 import { createMetadata } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
@@ -28,28 +42,27 @@ const steps = [
   },
 ];
 
-const faqs = [
-  {
-    q: "What areas do you serve?",
-    a: "Dale City is home base. We also serve Woodbridge, Manassas, and homes across Prince William County.",
-  },
-  {
-    q: "Do you offer year-round service?",
-    a: "Yes. Lawn care and landscaping in the growing season, snow removal when winter hits—one local team for every season.",
-  },
-  {
-    q: "How fast can I get a quote?",
-    a: `Use the form or call ${BUSINESS.phoneDisplay}. Same-day replies are the goal during ${BUSINESS.hours.label}.`,
-  },
-  {
-    q: "Can I book lawn care and snow removal together?",
-    a: "Yes. Many neighbors lock in summer mowing and fall snow standby so they don’t scramble when the first storm lands.",
-  },
-];
+const trustIcons = {
+  pin: IconPin,
+  clock: IconClock,
+  leaf: IconLeaf,
+  shield: IconShield,
+};
 
 export default function HomePage() {
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: HOME_FAQS.map((faq) => ({
+            "@type": "Question",
+            name: faq.q,
+            acceptedAnswer: { "@type": "Answer", text: faq.a },
+          })),
+        }}
+      />
       <PageHero
         brandFirst
         imageSrc={IMAGES.hero}
@@ -59,25 +72,38 @@ export default function HomePage() {
       />
 
       <section className="border-b border-line bg-snow">
-        <div className="mx-auto grid max-w-6xl gap-3 px-5 py-4 text-sm text-muted sm:grid-cols-2 md:grid-cols-4 md:px-8">
-          {TRUST.map((item) => (
-            <p key={item} className="font-medium text-ink">
-              {item}
-            </p>
-          ))}
+        <div className="mx-auto grid max-w-6xl gap-6 px-5 py-6 sm:grid-cols-2 md:grid-cols-4 md:px-8">
+          {TRUST.map((item) => {
+            const Icon = trustIcons[item.icon];
+            return (
+              <p key={item.label} className="flex items-start gap-3 text-sm font-medium text-ink">
+                <Icon className="mt-0.5 h-4 w-4 shrink-0 text-harvest" />
+                {item.label}
+              </p>
+            );
+          })}
         </div>
       </section>
 
-      <section className="bg-canopy-deep">
-        <div className="mx-auto grid max-w-6xl items-center gap-8 px-5 py-10 md:grid-cols-[1.2fr_0.8fr] md:px-8 md:py-14">
+      <section className="relative overflow-hidden">
+        <Image
+          src={IMAGES.fall}
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-canopy-deep/78" aria-hidden />
+        <div className="relative mx-auto grid max-w-6xl items-center gap-8 px-5 py-14 md:grid-cols-[1.2fr_0.8fr] md:px-8 md:py-20">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-frost">
+            <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-harvest">
+              <span className="h-px w-8 bg-harvest" />
               {OFFER.eyebrow}
             </p>
-            <h2 className="mt-3 font-display text-3xl font-semibold text-snow md:text-4xl">
+            <h2 className="mt-3 max-w-xl font-display text-3xl font-semibold text-snow md:text-5xl">
               {OFFER.title}
             </h2>
-            <p className="mt-4 max-w-xl text-snow/75">{OFFER.copy}</p>
+            <p className="mt-4 max-w-xl text-snow/80">{OFFER.copy}</p>
           </div>
           <CallTextCtas className="text-snow" size="lg" />
         </div>
@@ -90,44 +116,29 @@ export default function HomePage() {
           description="From weekly mowing to bed refresh to driveway snow clearing—you shouldn’t need three different vendors."
         />
 
-        <div className="mt-14 grid gap-8 md:grid-cols-3">
+        <div className="mt-14 grid gap-5 md:grid-cols-3">
           {SERVICES.map((service) => (
-            <article
+            <Link
               key={service.slug}
-              className="overflow-hidden rounded-lg bg-snow shadow-[0_18px_40px_rgba(12,31,25,0.08)]"
+              href={service.href}
+              className="group relative isolate min-h-[28rem] overflow-hidden rounded-lg"
             >
-              <div className="relative aspect-[4/3]">
-                <Image
-                  src={service.image}
-                  alt={service.imageAlt}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="font-display text-2xl font-semibold text-ink">
-                  {service.name}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted">
-                  {service.summary}
-                </p>
-                <ul className="mt-5 space-y-2 text-sm text-ink">
-                  {service.bullets.map((bullet) => (
-                    <li key={bullet} className="flex gap-2">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-canopy-mid" />
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href={service.href}
-                  className="mt-6 inline-flex text-sm font-semibold text-canopy underline-offset-4 hover:underline"
-                >
+              <Image
+                src={service.image}
+                alt={service.imageAlt}
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover transition duration-700 group-hover:scale-[1.04]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-canopy-deep via-canopy-deep/35 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-6 text-snow">
+                <h3 className="font-display text-2xl font-semibold">{service.name}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-snow/80">{service.summary}</p>
+                <span className="mt-4 inline-flex text-sm font-semibold text-harvest">
                   {service.shortName} details
-                </Link>
+                </span>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </section>
@@ -152,9 +163,7 @@ export default function HomePage() {
                   />
                 </div>
                 <div className="p-5">
-                  <h3 className="font-display text-xl font-semibold text-ink">
-                    {season.name}
-                  </h3>
+                  <h3 className="font-display text-xl font-semibold text-ink">{season.name}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{season.copy}</p>
                 </div>
               </article>
@@ -174,9 +183,7 @@ export default function HomePage() {
           <ol className="mt-14 grid gap-10 md:grid-cols-3">
             {steps.map((step, i) => (
               <li key={step.title}>
-                <p className="font-display text-4xl font-semibold text-harvest/90">
-                  0{i + 1}
-                </p>
+                <p className="font-display text-4xl font-semibold text-harvest/90">0{i + 1}</p>
                 <h3 className="mt-3 font-display text-xl font-semibold">{step.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-snow/75">{step.copy}</p>
               </li>
@@ -218,6 +225,35 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="relative overflow-hidden bg-canopy-deep py-20 md:py-28">
+        <Image
+          src={IMAGES.craft}
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover opacity-20"
+        />
+        <div className="relative mx-auto grid max-w-6xl items-start gap-10 px-5 md:grid-cols-[0.9fr_1.1fr] md:px-8">
+          <div className="text-snow">
+            <p className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-harvest">
+              <span className="h-px w-8 bg-harvest" />
+              Request a quote
+            </p>
+            <h2 className="mt-3 font-display text-3xl font-semibold md:text-5xl">
+              Get a number before leaf season is gone.
+            </h2>
+            <p className="mt-4 max-w-md text-snow/75">
+              Tell us the property. We call you back—usually the same day. Prefer to talk now?{" "}
+              {BUSINESS.phoneDisplay}.
+            </p>
+            <p className="mt-8 text-sm font-medium text-snow/80">
+              If the edges aren’t sharp, we come back.
+            </p>
+          </div>
+          <QuoteForm id="quote-repeat" compact={false} />
+        </div>
+      </section>
+
       <section className="border-y border-line bg-snow py-20 md:py-28">
         <div className="mx-auto max-w-6xl px-5 md:px-8">
           <SectionHeading
@@ -226,31 +262,13 @@ export default function HomePage() {
             description="Homeowners who want one reliable team—not a rotating cast of no-shows."
           />
           <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {[
-              {
-                quote:
-                  "They keep our lawn looking sharp every week. Easy to text and always on schedule.",
-                name: "Homeowner",
-                place: "Dale City",
-              },
-              {
-                quote:
-                  "Booked spring cleanup and later snow removal with the same crew. That alone is worth it.",
-                name: "Homeowner",
-                place: "Woodbridge",
-              },
-              {
-                quote:
-                  "Driveway was clear after the storm. Clear communication, fair quote, solid work.",
-                name: "Homeowner",
-                place: "Prince William County",
-              },
-            ].map((item) => (
+            {REVIEWS.map((item) => (
               <blockquote
                 key={item.place + item.quote.slice(0, 12)}
                 className="rounded-md border border-line bg-mist p-6"
               >
-                <p className="text-base leading-relaxed text-ink">“{item.quote}”</p>
+                <Stars />
+                <p className="mt-4 text-base leading-relaxed text-ink">“{item.quote}”</p>
                 <footer className="mt-5 text-sm text-muted">
                   {item.name} · {item.place}
                 </footer>
@@ -262,23 +280,18 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
         <SectionHeading eyebrow="FAQ" title="Quick answers before you call" />
-        <dl className="mt-10 divide-y divide-line border-y border-line">
-          {faqs.map((faq) => (
-            <div key={faq.q} className="grid gap-3 py-6 md:grid-cols-[1fr_1.4fr]">
-              <dt className="font-display text-lg font-semibold text-ink">{faq.q}</dt>
-              <dd className="leading-relaxed text-muted">{faq.a}</dd>
-            </div>
-          ))}
-        </dl>
+        <div className="mt-10">
+          <FaqList items={HOME_FAQS} />
+        </div>
       </section>
 
       <section className="relative overflow-hidden bg-canopy-deep py-20 md:py-24">
         <Image
-          src={IMAGES.craft}
+          src={IMAGES.hero}
           alt=""
           fill
           sizes="100vw"
-          className="object-cover opacity-25"
+          className="object-cover opacity-30"
         />
         <div className="relative mx-auto max-w-6xl px-5 text-snow md:px-8">
           <h2 className="max-w-2xl font-display text-3xl font-semibold md:text-5xl">

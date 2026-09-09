@@ -19,7 +19,7 @@ export default function AboutPage() {
       <PageHero
         compact
         imageSrc={IMAGES.craft}
-        imageAlt="Precision lawn edging and dark mulch on a professionally maintained bed"
+        imageAlt="Precision lawn edging on a professionally maintained bed"
         headline="A local crew that doesn’t skip a season"
         support="Dale City and Prince William County homeowners keep one relationship—lawn, landscape, and snow."
       />

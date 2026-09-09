@@ -1,6 +1,6 @@
 "use client";
 
-import { telHref } from "@/lib/constants";
+import { BUSINESS, telHref } from "@/lib/constants";
 import Link from "next/link";
 
 export function StickyMobileBar() {
@@ -11,7 +11,7 @@ export function StickyMobileBar() {
           href={telHref()}
           className="min-h-11 rounded-sm bg-harvest px-3 py-3 text-center text-sm font-semibold text-canopy-deep"
         >
-          Call now
+          Call {BUSINESS.phoneDisplay.replace("(", "").replace(") ", "-")}
         </a>
         <Link
           href="/#quote"
