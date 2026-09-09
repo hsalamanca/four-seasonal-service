@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Public_Sans } from "next/font/google";
+import { Fraunces, Public_Sans } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
@@ -8,7 +8,7 @@ import { localBusinessSchema } from "@/lib/schema";
 import { rootMetadata } from "@/lib/seo";
 import "./globals.css";
 
-const display = Bricolage_Grotesque({
+const display = Fraunces({
   variable: "--font-display",
   subsets: ["latin"],
   display: "swap",

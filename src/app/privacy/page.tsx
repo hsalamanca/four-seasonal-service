@@ -20,10 +20,10 @@ export default function PrivacyPage() {
           us by phone or text.
         </p>
         <p>
-          When you call or text {BUSINESS.phoneDisplay}, or use our quote form
-          to open a text message, you share contact details and property
-          information so we can respond to your request. We use that information
-          only to provide quotes and services.
+          When you call {BUSINESS.phoneDisplay} or submit a quote request, you
+          share contact details and property information so we can respond. We
+          use that information only to provide quotes and services. Quote forms
+          are sent to our crew by email.
         </p>
         <p>
           We do not sell your personal information. Our site may use standard

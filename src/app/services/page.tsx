@@ -1,7 +1,7 @@
 import { CallTextCtas } from "@/components/CallTextCtas";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
-import { SERVICES } from "@/lib/constants";
+import { IMAGES, SERVICES } from "@/lib/constants";
 import { createMetadata } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,7 +18,7 @@ export default function ServicesHubPage() {
     <>
       <PageHero
         compact
-        imageSrc="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=2000&q=80"
+        imageSrc={IMAGES.summer}
         imageAlt="Green residential lawn and landscaping in suburban Virginia"
         headline="Services for every season"
         support="Lawn care, landscaping, and snow removal—built for Dale City and Prince William County homes."
@@ -30,12 +30,12 @@ export default function ServicesHubPage() {
           title="Pick the service you need"
           description="Each page covers what’s included, how we work locally, and how to get a fast quote."
         />
-        <div className="mt-12 grid gap-10">
+        <div className="mt-12 grid gap-8">
           {SERVICES.map((service) => (
             <Link
               key={service.slug}
               href={service.href}
-              className="group grid overflow-hidden border border-line bg-snow md:grid-cols-[1.1fr_1fr]"
+              className="group grid overflow-hidden rounded-lg bg-snow shadow-[0_18px_40px_rgba(12,31,25,0.08)] md:grid-cols-[1.1fr_1fr]"
             >
               <div className="relative min-h-56">
                 <Image
@@ -47,12 +47,12 @@ export default function ServicesHubPage() {
                 />
               </div>
               <div className="flex flex-col justify-center p-6 md:p-8">
-                <h2 className="font-display text-2xl font-bold text-ink">
+                <h2 className="font-display text-2xl font-semibold text-ink">
                   {service.name}
                 </h2>
-                <p className="mt-3 text-muted leading-relaxed">{service.summary}</p>
+                <p className="mt-3 leading-relaxed text-muted">{service.summary}</p>
                 <span className="mt-5 text-sm font-semibold text-canopy">
-                  View {service.shortName.toLowerCase()} details →
+                  View {service.shortName.toLowerCase()} details
                 </span>
               </div>
             </Link>

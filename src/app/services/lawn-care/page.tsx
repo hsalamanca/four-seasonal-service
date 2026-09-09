@@ -44,10 +44,11 @@ export default function LawnCarePage() {
       />
       <PageHero
         compact
+        defaultService="Lawn Care"
         imageSrc={service.image}
         imageAlt={service.imageAlt}
         headline="Lawn Care & Lawn Mowing in Dale City, VA"
-        support="Consistent cuts, clean edges, and a yard that looks finished—not just shorter. Call or text for a free quote."
+        support="Consistent cuts, clean edges, and a yard that looks finished—not just shorter. Request a free quote."
       />
 
       <section className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
@@ -83,10 +84,7 @@ export default function LawnCarePage() {
             <p className="mt-2 text-sm text-muted">
               Text your address and preferred schedule. We’ll reply with next steps—no pressure, no fake online pricing.
             </p>
-            <CallTextCtas
-              className="mt-6 text-ink"
-              smsBody="Hi — I'd like a lawn care quote in Dale City / Prince William."
-            />
+            <CallTextCtas className="mt-6 text-ink" />
           </aside>
         </div>
 

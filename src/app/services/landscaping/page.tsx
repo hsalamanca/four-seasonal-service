@@ -44,6 +44,7 @@ export default function LandscapingPage() {
       />
       <PageHero
         compact
+        defaultService="Landscaping"
         imageSrc={service.image}
         imageAlt={service.imageAlt}
         headline="Landscaping Services in Dale City, VA"
@@ -85,10 +86,7 @@ export default function LandscapingPage() {
             <p className="mt-2 text-sm text-muted">
               Share photos of your beds or yard by text—fastest way to get a clear estimate.
             </p>
-            <CallTextCtas
-              className="mt-6 text-ink"
-              smsBody="Hi — I'd like a landscaping quote in Dale City / Prince William."
-            />
+            <CallTextCtas className="mt-6 text-ink" />
           </aside>
         </div>
 

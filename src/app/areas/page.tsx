@@ -1,7 +1,7 @@
 import { CallTextCtas } from "@/components/CallTextCtas";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
-import { AREAS } from "@/lib/constants";
+import { AREAS, IMAGES } from "@/lib/constants";
 import { createMetadata } from "@/lib/seo";
 import Link from "next/link";
 
@@ -17,7 +17,7 @@ export default function AreasHubPage() {
     <>
       <PageHero
         compact
-        imageSrc="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80"
+        imageSrc={IMAGES.neighborhood}
         imageAlt="Suburban homes in Northern Virginia service area"
         headline="Where we work"
         support="Dale City is home base. We serve homes across Prince William County—including Woodbridge and Manassas."
@@ -33,7 +33,7 @@ export default function AreasHubPage() {
             <Link
               key={area.slug}
               href={area.href}
-              className="border border-line bg-snow p-6 transition hover:border-canopy"
+              className="rounded-md border border-line bg-snow p-6 transition hover:border-canopy"
             >
               <h2 className="font-display text-2xl font-bold text-ink">
                 {area.name}

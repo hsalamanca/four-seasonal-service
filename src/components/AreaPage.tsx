@@ -2,7 +2,7 @@ import { CallTextCtas } from "@/components/CallTextCtas";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
-import { AREAS, SERVICES } from "@/lib/constants";
+import { AREAS, IMAGES, SERVICES } from "@/lib/constants";
 import { breadcrumbSchema } from "@/lib/schema";
 import { createMetadata } from "@/lib/seo";
 import Link from "next/link";
@@ -91,7 +91,8 @@ export function AreaPage({ slug }: { slug: AreaSlug }) {
       />
       <PageHero
         compact
-        imageSrc="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80"
+        defaultCity={copy.title}
+        imageSrc={IMAGES.neighborhood}
         imageAlt={`Residential property care in ${copy.title}, Virginia`}
         headline={copy.headline}
         support={copy.intro}
@@ -132,10 +133,7 @@ export function AreaPage({ slug }: { slug: AreaSlug }) {
             Call or text with your address and the service you need. We reply
             with clear next steps for lawn care, landscaping, or snow removal.
           </p>
-          <CallTextCtas
-            className="mt-6 text-ink"
-            smsBody={`Hi — I'd like a quote for my property in ${copy.title}.`}
-          />
+          <CallTextCtas className="mt-6 text-ink" />
         </div>
       </section>
     </>

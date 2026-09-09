@@ -20,6 +20,18 @@ export const BUSINESS = {
   },
 } as const;
 
+export const IMAGES = {
+  hero: "/images/hero-lawn.jpg",
+  lawn: "/images/lawn-care.jpg",
+  landscape: "/images/landscaping.jpg",
+  snow: "/images/snow-removal.jpg",
+  fall: "/images/season-fall.jpg",
+  spring: "/images/season-spring.jpg",
+  summer: "/images/season-summer.jpg",
+  craft: "/images/craft.jpg",
+  neighborhood: "/images/neighborhood.jpg",
+} as const;
+
 export const SERVICES = [
   {
     slug: "lawn-care",
@@ -30,8 +42,7 @@ export const SERVICES = [
       "Weekly and biweekly mowing, edging, trimming, and blow-off so your Dale City yard stays sharp all season.",
     description:
       "Reliable lawn care and mowing for Dale City and Prince William County homes—clean edges, consistent cuts, and yards that look cared for week after week.",
-    image:
-      "https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1600&q=80",
+    image: IMAGES.lawn,
     imageAlt: "Freshly mowed residential lawn with clean stripes in suburban Virginia",
     bullets: [
       "Weekly or biweekly mowing",
@@ -49,8 +60,7 @@ export const SERVICES = [
       "Mulch, beds, plantings, and seasonal cleanups that keep curb appeal strong through spring, summer, and fall.",
     description:
       "Residential landscaping in Dale City and Prince William County—bed refresh, mulch, plantings, and cleanups built for Northern Virginia yards.",
-    image:
-      "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1600&q=80",
+    image: IMAGES.landscape,
     imageAlt: "Landscaped residential flower beds with mulch and plantings",
     bullets: [
       "Mulch and bed maintenance",
@@ -68,8 +78,7 @@ export const SERVICES = [
       "Driveway and walkway clearing when winter hits—so you’re not stuck waiting on a last-minute crew.",
     description:
       "Snow removal for Dale City and Prince William County driveways and walks. Pre-season standby and storm response when it matters.",
-    image:
-      "https://images.unsplash.com/photo-1483664852095-d6cc68712067?auto=format&fit=crop&w=1600&q=80",
+    image: IMAGES.snow,
     imageAlt: "Cleared residential driveway after snowfall at blue hour",
     bullets: [
       "Driveway & walkway clearing",
@@ -78,6 +87,13 @@ export const SERVICES = [
       "Pre-season contracts available",
     ],
   },
+] as const;
+
+export const SERVICE_OPTIONS = [
+  ...SERVICES.map((s) => s.shortName),
+  "Fall cleanup",
+  "Snow standby",
+  "Not sure / multiple",
 ] as const;
 
 export const AREAS = [
@@ -117,6 +133,42 @@ export const NAV = [
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ] as const;
+
+export const TRUST = [
+  "Dale City local crew",
+  "Same-day quote replies",
+  "Year-round on one roster",
+  "HOA-ready finish",
+] as const;
+
+export const SEASONS = [
+  {
+    name: "Spring",
+    image: IMAGES.spring,
+    copy: "Cleanup, bed refresh, and the first sharp cuts of the year.",
+  },
+  {
+    name: "Summer",
+    image: IMAGES.summer,
+    copy: "Weekly mowing, edges, and a yard that stays finished in the heat.",
+  },
+  {
+    name: "Fall",
+    image: IMAGES.fall,
+    copy: "Leaf removal, last cuts, and snow standby locked before the storm.",
+  },
+  {
+    name: "Winter",
+    image: IMAGES.snow,
+    copy: "Driveways and walks cleared so you’re not waiting on a last-minute crew.",
+  },
+] as const;
+
+export const OFFER = {
+  eyebrow: "Now booking · Fall & winter",
+  title: "Fall cleanup and snow standby are open for Dale City.",
+  copy: "Leaf season is short. Storm contracts go first. Get a free quote today—we reply the same day whenever we can.",
+} as const;
 
 export function smsHref(body?: string) {
   const base = `sms:${BUSINESS.phoneSms}`;

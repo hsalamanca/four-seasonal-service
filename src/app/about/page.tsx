@@ -1,8 +1,9 @@
 import { CallTextCtas } from "@/components/CallTextCtas";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
-import { BUSINESS } from "@/lib/constants";
+import { BUSINESS, IMAGES } from "@/lib/constants";
 import { createMetadata } from "@/lib/seo";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata = createMetadata({
@@ -17,56 +18,60 @@ export default function AboutPage() {
     <>
       <PageHero
         compact
-        imageSrc="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=2000&q=80"
-        imageAlt="Outdoor property care work in a residential yard"
-        headline="About Four Seasonal Services"
-        support="A local Dale City and Prince William County team built around one idea: yard care that doesn’t skip a season."
+        imageSrc={IMAGES.craft}
+        imageAlt="Precision lawn edging and dark mulch on a professionally maintained bed"
+        headline="A local crew that doesn’t skip a season"
+        support="Dale City and Prince William County homeowners keep one relationship—lawn, landscape, and snow."
       />
 
-      <section className="mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-24">
-        <SectionHeading
-          eyebrow="Our story"
-          title="One local crew for lawn, landscape, and snow"
-          description="Homeowners get tired of juggling vendors—someone for mowing, someone else for beds, and a scramble every winter for snow. Four Seasonal Services exists so you can keep one reliable relationship year-round."
-        />
-
-        <div className="mt-10 space-y-6 text-base leading-relaxed text-muted">
-          <p>
-            We serve {BUSINESS.city} and {BUSINESS.county} with practical
-            residential work: weekly lawn care, landscaping cleanups and bed
-            maintenance, and snow removal when winter hits.
-          </p>
-          <p>
-            Communication stays simple. Call or text{" "}
-            <a
-              href={`tel:${BUSINESS.phoneTel}`}
-              className="font-semibold text-canopy"
-            >
-              {BUSINESS.phoneDisplay}
-            </a>
-            —send your address, what you need, and photos if you have them. We
-            quote clearly and show up like a neighbor, not a call center.
-          </p>
-          <p>
-            Explore{" "}
-            <Link href="/services" className="font-semibold text-canopy underline-offset-2 hover:underline">
-              our services
-            </Link>{" "}
-            or jump straight to{" "}
-            <Link href="/contact" className="font-semibold text-canopy underline-offset-2 hover:underline">
-              contact
-            </Link>{" "}
-            for a free quote.
-          </p>
+      <section className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
+        <div className="grid items-start gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <SectionHeading
+              eyebrow="Our story"
+              title="One roster for lawn, landscape, and snow"
+              description="Homeowners get tired of juggling vendors—someone for mowing, someone else for beds, and a scramble every winter. Four Seasonal Services exists so you can keep one reliable relationship year-round."
+            />
+            <div className="mt-10 space-y-6 text-base leading-relaxed text-muted">
+              <p>
+                We serve {BUSINESS.city} and {BUSINESS.county} with practical
+                residential work: weekly lawn care, landscaping cleanups and bed
+                maintenance, and snow removal when winter hits.
+              </p>
+              <p>
+                Communication stays simple. Send the property through the quote
+                form or call {BUSINESS.phoneDisplay}. We quote clearly and show
+                up like a neighbor, not a call center.
+              </p>
+              <p>
+                Explore{" "}
+                <Link href="/services" className="font-semibold text-canopy underline-offset-2 hover:underline">
+                  our services
+                </Link>{" "}
+                or request a{" "}
+                <Link href="/#quote" className="font-semibold text-canopy underline-offset-2 hover:underline">
+                  free quote
+                </Link>
+                .
+              </p>
+            </div>
+          </div>
+          <div className="relative aspect-[4/5] overflow-hidden rounded-lg">
+            <Image
+              src={IMAGES.summer}
+              alt="Lush midsummer lawn with professional weekly maintenance"
+              fill
+              sizes="(max-width: 1024px) 100vw, 40vw"
+              className="object-cover"
+            />
+          </div>
         </div>
 
-        <div className="mt-12 border border-line bg-snow p-6 md:p-8">
-          <h2 className="font-display text-xl font-bold text-ink">
-            Ready to talk?
-          </h2>
+        <div className="mt-16 rounded-lg bg-snow p-6 md:p-8">
+          <h2 className="font-display text-xl font-semibold text-ink">Ready to talk?</h2>
           <p className="mt-2 text-sm text-muted">
-            Hours: {BUSINESS.hours.label}. Based in {BUSINESS.city},{" "}
-            {BUSINESS.region} {BUSINESS.postalCode}.
+            Hours: {BUSINESS.hours.label}. Based in {BUSINESS.city}, {BUSINESS.region}{" "}
+            {BUSINESS.postalCode}.
           </p>
           <CallTextCtas className="mt-6 text-ink" />
         </div>

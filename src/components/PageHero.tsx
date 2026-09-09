@@ -1,4 +1,4 @@
-import { CallTextCtas } from "@/components/CallTextCtas";
+import { QuoteForm } from "@/components/QuoteForm";
 import { BUSINESS } from "@/lib/constants";
 import Image from "next/image";
 
@@ -9,6 +9,9 @@ type Props = {
   headline: string;
   support: string;
   compact?: boolean;
+  showForm?: boolean;
+  defaultService?: string;
+  defaultCity?: string;
 };
 
 export function PageHero({
@@ -18,13 +21,12 @@ export function PageHero({
   headline,
   support,
   compact = false,
+  showForm = true,
+  defaultService,
+  defaultCity,
 }: Props) {
   return (
-    <section
-      className={`relative isolate overflow-hidden bg-canopy-deep ${
-        compact ? "min-h-[52vh]" : "min-h-[92vh]"
-      }`}
-    >
+    <section className="relative isolate overflow-hidden bg-canopy-deep">
       <Image
         src={imageSrc}
         alt={imageAlt}
@@ -34,41 +36,49 @@ export function PageHero({
         className="hero-drift object-cover"
       />
       <div
-        className="absolute inset-0 bg-gradient-to-r from-canopy-deep/88 via-canopy-deep/70 to-canopy-deep/35"
+        className="absolute inset-0 bg-gradient-to-r from-canopy-deep/90 via-canopy-deep/72 to-canopy-deep/35"
         aria-hidden
       />
       <div
-        className="absolute inset-0 bg-gradient-to-t from-canopy-deep/70 via-transparent to-canopy-deep/30"
+        className="absolute inset-0 bg-gradient-to-t from-canopy-deep via-transparent to-canopy-deep/40"
         aria-hidden
       />
 
       <div
-        className={`relative mx-auto flex max-w-6xl flex-col justify-end px-5 md:px-8 ${
-          compact ? "pb-14 pt-16 md:pb-16 md:pt-20" : "pb-20 pt-20 md:pb-24 md:pt-28"
-        }`}
+        className={`relative mx-auto grid max-w-6xl items-end gap-10 px-5 md:px-8 ${
+          compact ? "py-16 md:py-20" : "py-16 md:py-24"
+        } ${showForm ? "lg:grid-cols-[1.15fr_0.85fr]" : ""}`}
       >
-        {brandFirst ? (
-          <p className="font-display text-2xl font-extrabold tracking-tight text-snow md:text-4xl">
-            {BUSINESS.name}
+        <div className={compact ? "" : "pb-2"}>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-frost">
+            {BUSINESS.city} · {BUSINESS.county}
           </p>
+          {brandFirst ? (
+            <p className="mt-4 font-display text-2xl font-semibold tracking-tight text-snow md:text-4xl">
+              {BUSINESS.name}
+            </p>
+          ) : null}
+          <h1
+            className={`max-w-3xl font-display font-semibold tracking-tight text-snow ${
+              brandFirst
+                ? "mt-3 text-4xl md:text-6xl"
+                : "mt-4 text-4xl md:text-5xl lg:text-6xl"
+            }`}
+          >
+            {headline}
+          </h1>
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-snow/80 md:text-lg">
+            {support}
+          </p>
+        </div>
+
+        {showForm ? (
+          <QuoteForm
+            compact
+            defaultService={defaultService}
+            defaultCity={defaultCity}
+          />
         ) : null}
-        <h1
-          className={`max-w-3xl font-display font-bold tracking-tight text-snow ${
-            brandFirst
-              ? "mt-4 text-3xl md:text-5xl"
-              : "text-4xl md:text-5xl lg:text-6xl"
-          }`}
-        >
-          {headline}
-        </h1>
-        <p className="mt-4 max-w-xl text-base leading-relaxed text-snow/80 md:text-lg">
-          {support}
-        </p>
-        <CallTextCtas
-          className="mt-8 text-snow"
-          size="lg"
-          smsBody="Hi Four Seasonal Services — I'd like a free quote."
-        />
       </div>
     </section>
   );

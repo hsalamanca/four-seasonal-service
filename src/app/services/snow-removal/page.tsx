@@ -44,6 +44,7 @@ export default function SnowRemovalPage() {
       />
       <PageHero
         compact
+        defaultService="Snow Removal"
         imageSrc={service.image}
         imageAlt={service.imageAlt}
         headline="Snow Removal in Dale City & Prince William County"
@@ -85,10 +86,7 @@ export default function SnowRemovalPage() {
             <p className="mt-2 text-sm text-muted">
               Text your address when snow is coming—or reserve standby before the season.
             </p>
-            <CallTextCtas
-              className="mt-6 text-ink"
-              smsBody="Hi — I need snow removal / winter standby in Dale City / Prince William."
-            />
+            <CallTextCtas className="mt-6 text-ink" />
           </aside>
         </div>
 
