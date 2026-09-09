@@ -1,4 +1,4 @@
-import { BrandMark } from "@/components/BrandMark";
+import { BrandLockup } from "@/components/BrandLockup";
 import { AREAS, BUSINESS, SERVICES, telHref } from "@/lib/constants";
 import Link from "next/link";
 
@@ -7,10 +7,9 @@ export function Footer() {
     <footer className="mt-auto border-t border-line bg-canopy-deep text-snow">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 md:grid-cols-4 md:px-8">
         <div className="md:col-span-1">
-          <div className="flex items-center gap-3">
-            <BrandMark className="h-8 w-8" />
-            <p className="font-display text-xl font-semibold">{BUSINESS.name}</p>
-          </div>
+          <Link href="/" aria-label={`${BUSINESS.name} home`} className="inline-flex">
+            <BrandLockup markClassName="h-9 w-9" />
+          </Link>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-snow/75">
             {BUSINESS.tagline} Serving {BUSINESS.city} and {BUSINESS.county}, VA.
           </p>

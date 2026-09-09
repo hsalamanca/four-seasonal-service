@@ -9,6 +9,7 @@ export function localBusinessSchema() {
     url: BUSINESS.domain,
     telephone: BUSINESS.phoneTel,
     image: `${BUSINESS.domain}/opengraph-image`,
+    logo: `${BUSINESS.domain}/icon-512.png`,
     priceRange: BUSINESS.priceRange,
     description:
       "Year-round lawn care, landscaping, and snow removal for Dale City and Prince William County, Virginia.",

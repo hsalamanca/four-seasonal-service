@@ -1,16 +1,41 @@
-export function BrandMark({ className = "h-9 w-9" }: { className?: string }) {
+type Props = {
+  className?: string;
+};
+
+export function BrandMark({ className = "h-10 w-10" }: Props) {
   return (
     <svg
-      viewBox="0 0 36 36"
+      viewBox="0 0 64 64"
       className={className}
       aria-hidden
       fill="none"
     >
-      <rect width="36" height="36" rx="8" fill="#0C1F19" />
-      <rect x="6" y="6" width="10" height="10" rx="2" fill="#7BAF7A" />
-      <rect x="20" y="6" width="10" height="10" rx="2" fill="#2A5C4A" />
-      <rect x="6" y="20" width="10" height="10" rx="2" fill="#C47B2D" />
-      <rect x="20" y="20" width="10" height="10" rx="2" fill="#8AA0A8" />
+      <rect width="64" height="64" rx="16" fill="#0C1F19" />
+      <rect
+        x="2.1"
+        y="2.1"
+        width="59.8"
+        height="59.8"
+        rx="14.6"
+        stroke="#C47B2D"
+        strokeWidth="2.05"
+      />
+      <rect
+        x="6.7"
+        y="6.7"
+        width="50.6"
+        height="50.6"
+        rx="11"
+        stroke="#C47B2D"
+        strokeWidth="0.85"
+        opacity="0.55"
+      />
+      <rect x="12.6" y="12.6" width="17.05" height="17.05" rx="3.4" fill="#7EBE74" />
+      <rect x="34.35" y="12.6" width="17.05" height="17.05" rx="3.4" fill="#2F7A56" />
+      <rect x="12.6" y="34.35" width="17.05" height="17.05" rx="3.4" fill="#C47B2D" />
+      <rect x="34.35" y="34.35" width="17.05" height="17.05" rx="3.4" fill="#A8B9BE" />
+      <circle cx="32" cy="32" r="3.55" fill="#0C1F19" />
+      <circle cx="32" cy="32" r="2.35" fill="#C47B2D" />
     </svg>
   );
 }

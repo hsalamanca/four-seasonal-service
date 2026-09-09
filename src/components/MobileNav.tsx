@@ -1,6 +1,6 @@
 "use client";
 
-import { BrandMark } from "@/components/BrandMark";
+import { BrandLockup } from "@/components/BrandLockup";
 import { BUSINESS, NAV, telHref } from "@/lib/constants";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -36,12 +36,7 @@ export function MobileNav() {
       {open ? (
         <div id="mobile-menu" className="fixed inset-0 z-50 bg-canopy-deep px-5 py-6">
           <div className="mb-10 flex items-center justify-between">
-            <span className="flex items-center gap-3">
-              <BrandMark />
-              <span className="font-display text-lg font-semibold text-snow">
-                {BUSINESS.name}
-              </span>
-            </span>
+            <BrandLockup />
             <button
               type="button"
               onClick={() => setOpen(false)}

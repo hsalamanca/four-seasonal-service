@@ -1,4 +1,4 @@
-import { BrandMark } from "@/components/BrandMark";
+import { BrandLockup } from "@/components/BrandLockup";
 import { IconPhone } from "@/components/Icons";
 import { BUSINESS, NAV, telHref } from "@/lib/constants";
 import Link from "next/link";
@@ -8,16 +8,8 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-snow/10 bg-canopy-deep/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-5 py-3 md:px-8">
-        <Link href="/" className="flex min-w-0 items-center gap-3">
-          <BrandMark className="h-9 w-9 shrink-0" />
-          <span className="min-w-0">
-            <span className="block truncate font-display text-lg font-semibold tracking-tight text-snow md:text-xl">
-              {BUSINESS.name}
-            </span>
-            <span className="hidden text-xs text-snow/65 sm:block">
-              Dale City & Prince William County
-            </span>
-          </span>
+        <Link href="/" aria-label={`${BUSINESS.name} home`} className="min-w-0">
+          <BrandLockup />
         </Link>
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
