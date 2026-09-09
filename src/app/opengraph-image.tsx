@@ -1,10 +1,10 @@
 import { ImageResponse } from "next/og";
 import { BUSINESS } from "@/lib/constants";
 
-export const runtime = "edge";
 export const alt = `${BUSINESS.name} — lawn care, landscaping, and snow removal in Dale City, VA`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+export const revalidate = 86400;
 
 export default function OpenGraphImage() {
   return new ImageResponse(

@@ -12,6 +12,14 @@ Marketing website for **Four Seasonal Services** — landscaping, lawn care / mo
 - SEO: metadata, sitemap, robots, JSON-LD LocalBusiness schema
 - Deployed on Vercel
 
+## Security
+
+- Edge middleware blocks scanner paths, exploit query strings, empty/hostile user-agents, and TRACE/TRACK
+- Per-IP rate limit on page traffic (search/social bots allowlisted)
+- Security headers: HSTS, CSP, frame denial, nosniff, referrer, permissions policy
+- Contact form: honeypot, length limits, input sanitization (form only opens the visitor's SMS app)
+- Preview deployments stay behind Vercel Authentication
+
 ## Local development
 
 ```bash
